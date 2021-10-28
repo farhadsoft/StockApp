@@ -8,7 +8,7 @@ public interface IRepositoryBase<TEntity> where TEntity : BaseEntity
 
     Task<TEntity> GetByIdAsync(int id);
 
-    Task AddAsync(TEntity entity);
+    Task AddAsync(IEnumerable<TEntity> entity);
 
     void Update(TEntity entity);
 

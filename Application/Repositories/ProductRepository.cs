@@ -13,9 +13,10 @@ public class ProductRepository : IProductRepository
     {
         dbSet = context.Set<Product>();
     }
-    public async Task AddAsync(Product entity)
+    public async Task AddAsync(IEnumerable<Product> entity)
     {
-        await dbSet.AddAsync(entity);
+
+        await dbSet.AddRangeAsync(entity);
     }
 
     public void Delete(Product entity)
