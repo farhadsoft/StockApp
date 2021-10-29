@@ -10,6 +10,9 @@ using (var stream = File.Open("Data/Order.xls", FileMode.Open, FileAccess.Read))
         if (reader.GetValue(3) is not null && reader.GetValue(4) is not null)
         {
             Console.WriteLine($"{reader.GetValue(1)} - {reader.GetValue(2)} - {reader.GetValue(3)} - {reader.GetValue(4)}");
+
+            //https://localhost:7036/api
+
         }
     }
 }

@@ -9,10 +9,12 @@ namespace WebApi.Controllers;
 public class ProductsController : ControllerBase
 {
     private readonly ISearchService searchService;
+    private readonly IUploadService uploadService;
 
-    public ProductsController(ISearchService searchService)
+    public ProductsController(ISearchService searchService, IUploadService uploadService)
     {
         this.searchService = searchService;
+        this.uploadService = uploadService;
     }
 
     [HttpGet]
@@ -20,5 +22,12 @@ public class ProductsController : ControllerBase
     {
         var result = await searchService.GetByNameAsync(name);
         return Ok(result);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult> Update([FromBody] IEnumerable<ProductAddDto> products)
+    {
+        await uploadService.AddAsync(products);
+        return Ok();
     }
 }
