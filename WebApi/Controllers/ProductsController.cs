@@ -17,7 +17,7 @@ public class ProductsController : ControllerBase
         this.uploadService = uploadService;
     }
 
-    [HttpGet]
+    [HttpGet("{name}")]
     public async Task<ActionResult<ProductSearchDto>> SearchByName(string name)
     {
         var result = await searchService.GetByNameAsync(name);
@@ -25,7 +25,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult> Update([FromBody] IEnumerable<ProductAddDto> products)
+    public async Task<ActionResult> Update(IEnumerable<ProductAddDto> products)
     {
         await uploadService.AddAsync(products);
         return Ok();

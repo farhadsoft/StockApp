@@ -38,9 +38,9 @@ public class ProductRepository : IProductRepository
         return dbSet.AsNoTracking();
     }
 
-    public async Task<Product> GetByIdAsync(int id)
+    public async Task<Product> GetByNameAsync(string name)
     {
-        var result = await dbSet.FindAsync(id);
+        var result = await dbSet.Where(x => x.Name == name).FirstOrDefaultAsync();
         return result ?? new Product();
     }
 

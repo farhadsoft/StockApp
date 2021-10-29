@@ -6,7 +6,7 @@ public interface IRepositoryBase<TEntity> where TEntity : BaseEntity
 {
     IQueryable<TEntity> FindAll();
 
-    Task<TEntity> GetByIdAsync(int id);
+    Task<TEntity> GetByNameAsync(string name);
 
     Task AddAsync(IEnumerable<TEntity> entity);
 
