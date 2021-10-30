@@ -15,10 +15,10 @@ namespace Application.Services
             this.mapper = mapper;
         }
 
-        public async Task<ProductSearchDto> GetByNameAsync(string name)
+        public async Task<IEnumerable<ProductSearchDto>> GetByNameAsync(string name)
         {
             var result = await unitOfWork.ProductRepository.GetByNameAsync(name);
-            return mapper.Map<ProductSearchDto>(result);
+            return mapper.Map<IEnumerable<ProductSearchDto>>(result);
         }
     }
 }

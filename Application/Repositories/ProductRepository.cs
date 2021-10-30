@@ -29,9 +29,9 @@ public class ProductRepository : IProductRepository
         return dbSet.AsNoTracking();
     }
 
-    public async Task<Product> GetByNameAsync(string name)
+    public async Task<IQueryable<Product>> GetByNameAsync(string name)
     {
-        var result = await dbSet.Where(x => x.Name == name).FirstOrDefaultAsync();
-        return result ?? new Product();
+        var result = await FindAll().Where(x => x.Name == name).ToListAsync();
+        return result.AsQueryable();
     }
 }

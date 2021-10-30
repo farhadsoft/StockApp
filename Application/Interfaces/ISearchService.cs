@@ -4,6 +4,6 @@ namespace Application.Interfaces
 {
     public interface ISearchService
     {
-        Task<ProductSearchDto> GetByNameAsync(string name);
+        Task<IEnumerable<ProductSearchDto>> GetByNameAsync(string name);
     }
 }
