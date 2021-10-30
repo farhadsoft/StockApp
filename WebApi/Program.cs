@@ -12,19 +12,12 @@ builder.Services.AddDbContext<StockDbContext>(o =>
     o.UseNpgsql(builder.Configuration.GetConnectionString("Connection"));
 });
 builder.Services.AddControllers(); 
-builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IUploadService, UploadService>();
 builder.Services.AddTransient<ISearchService, SearchService>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddAutoMapper(typeof(AutomapperProfile));
 
 var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
 app.UseHttpsRedirection();
 

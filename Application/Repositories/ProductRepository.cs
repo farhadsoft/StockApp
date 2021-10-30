@@ -19,18 +19,9 @@ public class ProductRepository : IProductRepository
         await dbSet.AddRangeAsync(entity);
     }
 
-    public void Delete(Product entity)
+    public void Delete()
     {
-        dbSet.RemoveRange(entity);
-    }
-
-    public async Task DeleteByIdAsync(int id)
-    {
-        var entity = await dbSet.FindAsync(id);
-        if (entity != null)
-        {
-            this.Delete(entity);
-        }
+        dbSet.RemoveRange(dbSet);
     }
 
     public IQueryable<Product> FindAll()
@@ -42,10 +33,5 @@ public class ProductRepository : IProductRepository
     {
         var result = await dbSet.Where(x => x.Name == name).FirstOrDefaultAsync();
         return result ?? new Product();
-    }
-
-    public void Update(Product entity)
-    {
-        dbSet.Update(entity);
     }
 }

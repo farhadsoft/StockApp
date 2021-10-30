@@ -10,9 +10,5 @@ public interface IRepositoryBase<TEntity> where TEntity : BaseEntity
 
     Task AddAsync(IEnumerable<TEntity> entity);
 
-    void Update(TEntity entity);
-
-    void Delete(TEntity entity);
-
-    Task DeleteByIdAsync(int id);
+    void Delete();
 }

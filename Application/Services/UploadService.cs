@@ -18,6 +18,9 @@ namespace Application.Services
 
         public async Task AddAsync(IEnumerable<ProductAddDto> products)
         {
+            unitOfWork.ProductRepository.Delete();
+            await unitOfWork.SaveAsync();
+
             var productList = mapper.Map<IEnumerable<Product>>(products);
             await unitOfWork.ProductRepository.AddAsync(productList);
             await unitOfWork.SaveAsync();
