@@ -4,13 +4,15 @@ using Application.Repositories;
 using Application.Services;
 using Domain;
 using Microsoft.EntityFrameworkCore;
+using WebApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<StockDbContext>(o =>
 {
-    o.UseNpgsql(builder.Configuration.GetConnectionString("Connection"));
+    o.UseNpgsql(builder.Configuration.GetConnectionString("Connection"), o => o.MigrationsAssembly("Domain"));
 });
+
 builder.Services.AddControllers(); 
 builder.Services.AddTransient<IUploadService, UploadService>();
 builder.Services.AddTransient<ISearchService, SearchService>();
@@ -24,5 +26,5 @@ app.UseHttpsRedirection();
 //app.UseAuthorization();
 
 app.MapControllers();
-
+app.MigrateDatabase();
 app.Run();

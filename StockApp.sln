@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31815.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockApp", "StockApp\StockApp.csproj", "{95047017-5767-4A19-B182-ECDCEF4A4037}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockApp", "StockApp\StockApp.csproj", "{95047017-5767-4A19-B182-ECDCEF4A4037}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{9E24294A-C616-4651-A03C-78FB0E8C39A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{9E24294A-C616-4651-A03C-78FB0E8C39A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{37B887C5-BF42-4B87-8AC0-E1BFAB018CE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{37B887C5-BF42-4B87-8AC0-E1BFAB018CE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{DDC5DB24-52BD-4A5F-9E4B-8AE888AB1E45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{DDC5DB24-52BD-4A5F-9E4B-8AE888AB1E45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelToServer", "ExcelToServer\ExcelToServer.csproj", "{9C746ACE-559F-4967-8EE0-BDAFD0E9504E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelToServer", "ExcelToServer\ExcelToServer.csproj", "{9C746ACE-559F-4967-8EE0-BDAFD0E9504E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
