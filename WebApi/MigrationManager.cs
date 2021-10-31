@@ -9,16 +9,14 @@ public static class MigrationManager
     {
         using (var scope = host.Services.CreateScope())
         {
-            using (var appContext = scope.ServiceProvider.GetRequiredService<StockDbContext>())
+            using var appContext = scope.ServiceProvider.GetRequiredService<StockDbContext>();
+            try
             {
-                try
-                {
-                    appContext.Database.Migrate();
-                }
-                catch (Exception ex)
-                {
-                    throw new ArgumentException(ex.Message);
-                }
+                appContext.Database.Migrate();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
             }
         }
         return host;
