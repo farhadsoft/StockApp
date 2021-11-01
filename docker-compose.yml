@@ -1,18 +1,19 @@
 version: '3.4'
 
 services:
-  postgres:
+  db:
     image: postgres
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PASSWORD=master
+    ports:
+      - 5432:5432
   webapi:
     image: webapi
     build:
       context: .
       dockerfile: WebApi/Dockerfile
     ports:
-      - 80:80
-      - 433:433
+      - 6000:80
+      - 6001:443
     depends_on:
-      - postgres
+      - db

@@ -30,7 +30,7 @@ static async Task SendToApi(List<Product> products)
     var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
 
     using var httpClient = new HttpClient();
-    var httpResponse = await httpClient.PostAsync("http://localhost:5000/api/Products", httpContent);
+    var httpResponse = await httpClient.PostAsync("http://***REMOVED***:49158/api/Products", httpContent);
     if (httpResponse.Content != null)
     {
         var responseContent = await httpResponse.Content.ReadAsStringAsync();

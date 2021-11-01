@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<StockDbContext>(o =>
 {
-    o.UseNpgsql(builder.Configuration.GetConnectionString("Connection"), o => o.MigrationsAssembly("Domain"));
+    o.UseNpgsql(builder.Configuration.GetConnectionString("Docker"), o => o.MigrationsAssembly("Domain"));
 });
 
 builder.Services.AddControllers(); 
