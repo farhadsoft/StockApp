@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelToServer", "ExcelToServer\ExcelToServer.csproj", "{9C746ACE-559F-4967-8EE0-BDAFD0E9504E}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{59938FCF-775F-4A0B-AAD6-1CC85625949E}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{2FBC72C6-C680-453D-942D-64BA21D4ADF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1AA5253E-0330-421E-AE0D-7A38C42748F7}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +46,10 @@ Global
 		{9C746ACE-559F-4967-8EE0-BDAFD0E9504E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C746ACE-559F-4967-8EE0-BDAFD0E9504E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C746ACE-559F-4967-8EE0-BDAFD0E9504E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59938FCF-775F-4A0B-AAD6-1CC85625949E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59938FCF-775F-4A0B-AAD6-1CC85625949E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59938FCF-775F-4A0B-AAD6-1CC85625949E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59938FCF-775F-4A0B-AAD6-1CC85625949E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FBC72C6-C680-453D-942D-64BA21D4ADF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FBC72C6-C680-453D-942D-64BA21D4ADF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FBC72C6-C680-453D-942D-64BA21D4ADF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FBC72C6-C680-453D-942D-64BA21D4ADF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
