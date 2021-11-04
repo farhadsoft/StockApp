@@ -1,0 +1,15 @@
+﻿@page "/login"
+<h3>Login</h3>
+
+<RadzenCard>
+    <RadzenTemplateForm Data=@("SimpleLogin") Action="http://www.google.com">
+        <RadzenLogin AllowRegister="false" AllowResetPassword="false" Login=@(args => OnLogin(args)) Style="margin-bottom: 20px;" />
+    </RadzenTemplateForm>
+</RadzenCard>
+
+@code {
+    private async Task OnLogin(object value)
+    {
+        
+    }
+}
