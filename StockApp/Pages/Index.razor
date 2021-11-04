@@ -5,24 +5,26 @@
 @inject HttpClient httpClient
 
 <PageTitle>Product search page</PageTitle>
-
-   <RadzenAutoComplete TextProperty="Name" Data=@productsName Style="margin-bottom: 20px" Change=@(args => Search(args)) />
-   <RadzenDataGrid TItem="Product" Data="@products" EmptyText="@emptyText">
+<div class="align-items-center">
+    <RadzenAutoComplete TextProperty="Name" Data=@productsName Style="margin-bottom: 20px; width: 100%" Change=@(args => Search(args)) />
+    <RadzenDataGrid TItem="Product" Data="@products" EmptyText="@emptyText" Style="width: 100%">
         <Columns>
             <RadzenDataGridColumn TItem="Product" Property="Name" Title="Name" />
             <RadzenDataGridColumn TItem="Product" Property="Seria" Title="Seria" />
             <RadzenDataGridColumn TItem="Product" Property="Quantity" Title="Quantity" />
         </Columns>
     </RadzenDataGrid>
+</div>
 
 @code {
     private IEnumerable<Product>? products;
     private IEnumerable<Product>? productsName;
-    private string? emptyText;
+    private string emptyText = "No item selected";
 
     protected async override Task OnInitializedAsync()
     {
         productsName = await GetAllNames();
+        products = new List<Product>();
     }
 
     private async Task Search(object value)
@@ -32,7 +34,7 @@
         {
             var searchText = value.ToString();
             var result = await client.GetFromJsonAsync<IEnumerable<Product>>($"http://docker.farhad.su:49158/api/Products/{searchText}");
-            if(result is not null)
+            if(result is not null && !string.IsNullOrWhiteSpace(searchText))
             {
                 products = result;
             }
