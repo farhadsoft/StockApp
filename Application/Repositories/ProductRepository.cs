@@ -34,4 +34,10 @@ public class ProductRepository : IProductRepository
         var result = await FindAll().Where(x => x.Name == name).ToListAsync();
         return result.AsQueryable();
     }
+
+    public async Task<IQueryable<Product>> GetNamesAsync()
+    {
+        var result = await FindAll().ToListAsync();
+        return result.AsQueryable();
+    }
 }

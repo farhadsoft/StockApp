@@ -6,7 +6,7 @@
 
 <PageTitle>Product search page</PageTitle>
 
-   <RadzenAutoComplete TextProperty="Name" Change=@(args => Search(args)) Style="margin-bottom: 20px" />
+   <RadzenAutoComplete TextProperty="Name" Data=@productsName Style="margin-bottom: 20px" Change=@(args => Search(args)) />
    <RadzenDataGrid TItem="Product" Data="@products" EmptyText="@emptyText">
         <Columns>
             <RadzenDataGridColumn TItem="Product" Property="Name" Title="Name" />
@@ -17,7 +17,13 @@
 
 @code {
     private IEnumerable<Product>? products;
+    private IEnumerable<Product>? productsName;
     private string? emptyText;
+
+    protected async override Task OnInitializedAsync()
+    {
+        productsName = await GetAllNames();
+    }
 
     private async Task Search(object value)
     {
@@ -25,11 +31,18 @@
         if (value is not null)
         {
             var searchText = value.ToString();
-            var result = await client.GetFromJsonAsync<IEnumerable<Product>>($"https://localhost:7036/api/Products/{searchText}");
+            var result = await client.GetFromJsonAsync<IEnumerable<Product>>($"http://docker.farhad.su:49158/api/Products/{searchText}");
             if(result is not null)
             {
                 products = result;
             }
         }
+    }
+
+    private async Task<IEnumerable<Product>> GetAllNames()
+    {
+        HttpClient client = new HttpClient();
+        var result = await client.GetFromJsonAsync<IEnumerable<Product>>($"http://docker.farhad.su:49158/api/Products");
+        return result ?? new List<Product>();
     }
 }

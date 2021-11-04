@@ -10,6 +10,7 @@ namespace Application
         {
             CreateMap<ProductAddDto, Product>();
             CreateMap<Product, ProductSearchDto>();
+            CreateMap<Product, ProductNameDto>();
         }
     }
 }
