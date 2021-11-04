@@ -21,6 +21,9 @@ builder.Services.AddAutoMapper(typeof(AutomapperProfile));
 
 var app = builder.Build();
 
+//app.UseHealthChecks();
+app.UseResponseCaching();
+
 app.UseHttpsRedirection();
 
 //app.UseAuthorization();

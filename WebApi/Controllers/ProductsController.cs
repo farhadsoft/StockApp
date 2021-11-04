@@ -17,6 +17,13 @@ public class ProductsController : ControllerBase
         this.uploadService = uploadService;
     }
 
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<ProductNameDto>>> GetProductsName()
+    {
+        var result = await searchService.GetAllNames();
+        return Ok(result);
+    }
+
     [HttpGet("{name}")]
     public async Task<ActionResult<ProductSearchDto>> SearchByName(string name)
     {

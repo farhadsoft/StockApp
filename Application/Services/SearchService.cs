@@ -15,6 +15,12 @@ namespace Application.Services
             this.mapper = mapper;
         }
 
+        public async Task<IEnumerable<ProductNameDto>> GetAllNames()
+        {
+            var result = await unitOfWork.ProductRepository.GetNamesAsync();
+            return mapper.Map<IEnumerable<ProductNameDto>>(result.DistinctBy(x => x.Name));
+        }
+
         public async Task<IEnumerable<ProductSearchDto>> GetByNameAsync(string name)
         {
             var result = await unitOfWork.ProductRepository.GetByNameAsync(name);
