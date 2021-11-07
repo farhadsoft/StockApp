@@ -1,15 +1,30 @@
-﻿@page "/login"
-<h3>Login</h3>
+﻿@using Microsoft.Identity.Web
+@using Microsoft.Extensions.Options
+@inject IOptionsMonitor<MicrosoftIdentityOptions> microsoftIdentityOptions
 
-<RadzenCard>
-    <RadzenTemplateForm Data=@("SimpleLogin") Action="http://www.google.com">
-        <RadzenLogin AllowRegister="false" AllowResetPassword="false" Login=@(args => OnLogin(args)) Style="margin-bottom: 20px;" />
-    </RadzenTemplateForm>
-</RadzenCard>
+<AuthorizeView>
+    <Authorized>
+        @if (canEditProfile)
+        {
+            <a href="MicrosoftIdentity/Account/EditProfile">Hello, @context.User.Identity.Name!</a>
+        }
+        else
+        {
+            <text>Hello, @context.User.Identity.Name!</text>
+        }
+        <a href="MicrosoftIdentity/Account/SignOut">Log out</a>
+    </Authorized>
+    <NotAuthorized>
+        <a href="MicrosoftIdentity/Account/SignIn">Log in</a>
+    </NotAuthorized>
+</AuthorizeView>
 
 @code {
-    private async Task OnLogin(object value)
+    private bool canEditProfile;
+
+    protected override void OnInitialized()
     {
-        
+        var options = microsoftIdentityOptions.CurrentValue;
+        canEditProfile = !string.IsNullOrEmpty(options.EditProfilePolicyId);
     }
 }

@@ -2,12 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <UserSecretsId>aspnet-StockApp</UserSecretsId>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Radzen.Blazor" Version="3.11.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0-rc.2.21480.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.0-rc.2.21480.10" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="1.20.0" />
+    <PackageReference Include="Microsoft.Identity.Web.UI" Version="1.20.0" />
+    <PackageReference Include="Radzen.Blazor" Version="3.11.12" />
   </ItemGroup>
 
 </Project>

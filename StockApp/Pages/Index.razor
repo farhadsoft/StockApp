@@ -41,10 +41,10 @@
         }
     }
 
-    private async Task<IEnumerable<Product>> GetAllNames()
+    private async ValueTask<IEnumerable<Product>> GetAllNames()
     {
         HttpClient client = new HttpClient();
-        var result = await client.GetFromJsonAsync<IEnumerable<Product>>($"http://docker.farhad.su:49158/api/Products");
+        var result = await client.GetFromJsonAsync<IEnumerable<Product>>($"http://docker.farhad.su:49158/api/Products").ConfigureAwait(false);
         return result ?? new List<Product>();
     }
 }
