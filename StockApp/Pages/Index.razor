@@ -3,6 +3,7 @@
 @using System.Text.Json
 @using StockApp.Data;
 @inject HttpClient httpClient
+@inject Microsoft.Extensions.Options.IOptions<WebApiOptions> webApi
 
 <PageTitle>Product search page</PageTitle>
 <div class="align-items-center">
@@ -20,9 +21,11 @@
     private IEnumerable<Product>? products;
     private IEnumerable<Product>? productsName;
     private string emptyText = "No item selected";
+    private string? apiUrl;
 
     protected async override Task OnInitializedAsync()
     {
+        apiUrl = $"http://{webApi.Value.Domain}:{webApi.Value.Port}{webApi.Value.Path}";
         productsName = await GetAllNames();
         products = new List<Product>();
     }
@@ -33,7 +36,7 @@
         if (value is not null)
         {
             var searchText = value.ToString();
-            var result = await client.GetFromJsonAsync<IEnumerable<Product>>($"http://docker.farhad.su:49158/api/Products/{searchText}");
+            var result = await client.GetFromJsonAsync<IEnumerable<Product>>($"{apiUrl}/{searchText}");
             if(result is not null && !string.IsNullOrWhiteSpace(searchText))
             {
                 products = result;
@@ -44,7 +47,7 @@
     private async ValueTask<IEnumerable<Product>> GetAllNames()
     {
         HttpClient client = new HttpClient();
-        var result = await client.GetFromJsonAsync<IEnumerable<Product>>($"http://docker.farhad.su:49158/api/Products").ConfigureAwait(false);
+        var result = await client.GetFromJsonAsync<IEnumerable<Product>>(apiUrl).ConfigureAwait(false);
         return result ?? new List<Product>();
     }
 }
