@@ -15,9 +15,9 @@ namespace Domain.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Seria = table.Column<string>(type: "text", nullable: true),
-                    Code = table.Column<string>(type: "text", nullable: true),
+                    Name = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    Seria = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: true),
+                    Code = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: true),
                     Quantity = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
