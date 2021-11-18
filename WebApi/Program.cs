@@ -8,10 +8,7 @@ using WebApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<StockDbContext>(o =>
-{
-    o.UseNpgsql(builder.Configuration.GetConnectionString("Docker"), o => o.MigrationsAssembly("Domain"));
-});
+builder.Services.AddNpgsql<StockDbContext>(builder.Configuration.GetConnectionString("Docker"), o => o.MigrationsAssembly("Domain"));
 
 builder.Services.AddControllers(); 
 builder.Services.AddTransient<IUploadService, UploadService>();

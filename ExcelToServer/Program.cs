@@ -1,4 +1,5 @@
 ﻿using ExcelDataReader;
+using System.Configuration;
 using System.Text;
 using System.Text.Json;
 
@@ -30,7 +31,7 @@ static async Task SendToApi(List<Product> products)
     var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
 
     using var httpClient = new HttpClient();
-    var httpResponse = await httpClient.PostAsync("http://docker.farhad.su:49158/api/Products", httpContent);
+    var httpResponse = await httpClient.PostAsync(ConfigurationManager.AppSettings["azure"], httpContent);
     if (httpResponse.Content is not null)
     {
         var responseContent = await httpResponse.Content.ReadAsStringAsync();
