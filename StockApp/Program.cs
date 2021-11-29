@@ -3,6 +3,7 @@ using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 using Radzen;
 using StockApp.Data;
+using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,8 @@ builder.Services.AddServerSideBlazor()
     .AddMicrosoftIdentityConsentHandler();
 
 var app = builder.Build();
+
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 if (!app.Environment.IsDevelopment())
 {
